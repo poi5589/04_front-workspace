@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>선택자 우선순위</title>
+    <style>
+        h1{
+            background: pink;
+            color: yellow;
+        }
+        h1{
+            background: red;
+        }
+        #id1{
+            background: pink;
+        }
+        .class1{
+            background: yellowgreen;
+            color:white;
+        }
+        div{
+            background: teal !important;
+            color:red !important;
+            width:200px;
+            height:200px;
+        }
+    </style>
+</head>
+<body>
+    <h1>선택자 우선순위</h1>
+    
+
+    <div id="id1" class="class1">우선순위 테스트</div>
+
+    <div id="id1" class="class1" style="background:purple">우선순위 테스트</div>
+                                <!--인라인스타일이 더 우선순위라서 적용됨-->
+
+
+
+
+
+
+
+</body>
+</html>
