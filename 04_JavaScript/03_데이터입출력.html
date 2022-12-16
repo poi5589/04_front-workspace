@@ -72,23 +72,23 @@
             console.log(divEl);
             console.dir(divEl); // console.dir : 요소객체의 디렉토리 구조(속성들에 대한 정보)를 볼 수 있다 
         
-                // 선택된 요소의 속성에 . 으로 접근가능
-                console.log(divEl.className) // className : 해당 요소의 클래스 속성
-                console.log(divEl.id); // id : 해당 요소의 아이디 속성
+            // 선택된 요소의 속성에 . 으로 접근가능
+            console.log(divEl.className) // className : 해당 요소의 클래스 속성
+            console.log(divEl.id); // id : 해당 요소의 아이디 속성
 
-                // innerHTML(태그+글자), innerText(글자만) : 요소의 content영역의 속성
-                console.log(divEl.innerHTML); // html태그도 같이 보관
-                console.log(divEl.innerText); // 오로지 텍스트만 보관 (html태그)
+            // innerHTML(태그+글자), innerText(글자만) : 요소의 content영역의 속성
+            console.log(divEl.innerHTML); // html태그도 같이 보관
+            console.log(divEl.innerText); // 오로지 텍스트만 보관 (html태그)
 
-                // 해당 요소의 속성에 접근해서 값을 대입하면 속성값 변경도 가능
-                //divEl.className= "test";
+            // 해당 요소의 속성에 접근해서 값을 대입하면 속성값 변경도 가능
+            //divEl.className= "test";
 
-                divEl.innerText = "<b>innerText로 속성값 변경함ㅎㅎ</b>";
+            divEl.innerText = "<b>innerText로 속성값 변경함ㅎㅎ</b>";
             
-                // 속성에 속성으로 타고 들어갈 수도 있음
-                divEl.style.backgroundColor = "yellow";
-                divEl.style.width = "200px";
-                divEl.style.height = "200px";
+            // 속성에 속성으로 타고 들어갈 수도 있음
+            divEl.style.backgroundColor = "yellow";
+            divEl.style.width = "200px";
+            divEl.style.height = "200px";
         }
 
 
@@ -98,7 +98,7 @@
     
     <h2>2. 데이터 입력받는 구문 (변수에 기록 가능)</h2>
     <p>
-        1) 변수 = [window.]confirm("질문내용"); <br>
+        1) 변수 = [window.]confirm("질문내용(사용자의 의사)"); <br> 
         2) 변수 = [window.]prompt("질문내용"); <br>
         3) 변수 = 선택한요소.속성 (id, className, innerHTML, innerText, ...); <br>
         4) 변수 = 선택한input요소.value;
@@ -177,6 +177,32 @@
         }
     </script>
 
+    <br>
+
+    <h3>4) 선택한input요소.value</h3>
+    아이디 : <input type="text" id="userId"> <br>
+    비밀번호 : <input type="password" id="userPwd"> <br>
+
+    <button onclick="testInput();">클릭</button>
+    <br>
+    <div id="area5"></div>
+
+    <script>
+        function testInput(){ // 특정 function밖에있는 코드는 화면이 로딩될때 보여진다 
+            const input1 = document.getElementById("userId"); // 아이디input요소객체가담김(not.텍스트값)
+            const input2 = document.getElementById("userPwd"); //비번input요소객체
+
+            //console.dir(input1); // 요소의 디렉토리 구조를 볼수있는 구문
+
+            let id = input1.value;
+            let pwd = input2.value; // value는 text값을 가지고있다
+
+            document.getElementById("area5").innerHTML = id + ", " + pwd;
+            input1.value = ""; // 빈 문자열로 바꾸면 초기화된다
+            input2.value = "";
+
+        }
+    </script>
 
 
 
@@ -184,5 +210,27 @@
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
 </body>
 </html>
