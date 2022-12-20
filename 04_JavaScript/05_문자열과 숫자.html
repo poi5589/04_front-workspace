@@ -57,7 +57,7 @@
 
     <br>
 
-    <h3>* 문자열 과련 html메소드</h3>
+    <h3>* 문자열 관련 html메소드</h3>
     <button onclick="stringHtmlTest();">문자열html메소드</button>
     <div id="area2" class="area small"></div>
 
@@ -109,9 +109,6 @@
                 const test4 = "7" + 7+ 7; // "77" + 7 => "777"
                 const test5 = "7" + (7 + 7); // "7" + 14 => "714"
 
-                // 덧셈을 제외한 산술연산시에는
-                // 문자열이 숫자로 자동형변환 된 뒤에 산술연산됨
-                // 단, 문자열에는 오로지 숫자만 존재해야됨
                 const test6 = "7" - 7; // 0
                 const test7 = "7" * 7; // 49
                 const test8 = "7" / 7; // 1
@@ -126,12 +123,11 @@
                 // 2) parseInt(문자열)
                 // 3) parseFloat(문자열)
 
-                // 2, "3"
                 const test9 = 2 + "3"; // "23"
 
-                const test10 = 2 + Number("3");
-                const test11 = 2 + parseInt("3");
-                const test12 = 2 + parseFloat("3");
+                const test10 = 2 + Number("3"); // 5
+                const test11 = 2 + parseInt("3"); // 5
+                const test12 = 2 + parseFloat("3"); // 5
 
                 area4.innerHTML += test10 + ", " + test11 + ", " + test12 + "<br>";
 
