@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>자바스크립트 실습문제</title>
+</head>
+<body>
+
+    <h2>
+        1. 실행 버튼 클릭시 사용자에게 알람창(prompt)으로 "메세지를 입력하세요"문구를 출력해주고 <br>
+           이때 입력받은 내용이 div#test1에 출력될 수 있도록 하시오. <br>
+           단, 사용자에게 입력받은 값이 없을 경우 "메세지가 입력되지 않았습니다." 가 출력될 수 있도록 하시오.
+    </h2>
+    <button >실행</button>
+    <div id="test1"></div>
+
+    <hr>
+
+    <h2>
+        2. 실행 버튼 클릭시 사용자에게 알람창(confirm)으로 "개인정보활용에 동의하시겠습니까?"를 출력해주고 <br>
+           확인을 누르면 "당신의 개인정보가 유출되었습니다", 취소를 누르면 "당신의 개인정보 유출을 막았습니다" 라는 <br>
+           메세지가 div#test2에 출력될 수 있도록 하시오.
+    </h2>
+    <button >실행</button>
+    <div id="test2"></div>
+
+    <hr>
+
+    <h2>
+        3. 실행 버튼 클릭시 10개의 랜덤(1~100)값을 발생시켜 해당 랜덤값을 담은 배열을 만들고 <br>
+           해당 배열을 내림차순 정렬 한 후 해당 숫자들이 div#test3>ul 안에 총 10개의 li 요소로 출력될 수 있도록 하시오. 
+    </h2>
+    <button >실행</button>
+    <div id="test3">
+        <ul></ul>
+    </div>
+
+    <hr>
+
+    <h2>
+        4. input[type=text name=img]인 요소에 화면에 출력하고자 하는 이미지의 경로를 입력받고 <br>
+           출력 버튼 클릭하면 div.img-container 요소 내에 사용자가 입력한 주소의 img가 200X200크기로 출력될 수 있도록 하시오.
+    </h2>
+    <input type="text" name="img">
+    <button >출력</button>
+    <div class="img-container"></div>
+
+    <hr>
+
+    <h2>
+        5. 아래 태그의 데이터를 확인하기 버튼을 클릭하면 모두 가져와 3글자 이상인 데이터만 div#checkStr에 출력하기 
+    </h2>
+    <div class="data-container">
+        <p>가나다라</p>
+        <p>abcde</p>
+        <h3>썬칩</h3>
+        <h4>홈런볼</h4>
+        <span>초코칩쿠키</span>
+        <p>칸쵸</p>
+        <h4>초코파이</h4>
+        <h2>칙촉</h2>
+    </div>
+    <button >확인하기</button>
+    <div id="checkStr"></div>
+
+    <hr>
+
+    <h2>
+        6. 아래의 input[type=number] 두개는 숫자를, select>option 요소는 연산하고자 하는 연산자를 입력받기 위한 것이다. <br>
+           실행 버튼 클릭시 사용자가 입력한 값들을 가지고 그에 맞는 적절한 연산 후 div#calc-result에 결과가 출력될 수 있도록 하시오. 
+    </h2>
+
+    <div id="cal-container">
+        <input type="number" id="su1">
+        <input type="number" id="su2">
+        <select name="op" id="op">
+            <option value="+">+</option>
+            <option value="-">-</option>
+            <option value="*">*</option>
+            <option value="/">/</option>
+        </select>
+        <button >실행</button>
+        <div id="calc-result"></div>
+    </div>
+
+    <hr>
+
+    <h2>
+        7. div.img-container 안에 원하는 이미지를 100x100사이지로 한개 출력하고 <br>
+        그 사진을 클릭할때마다 이미지의 크기가 가로 세로 10px씩 증가되게끔 구현하시오.
+    </h2>
+    <div class="img-container">
+        <img src="" width="100" height="100">
+    </div>
+
+    <hr>
+
+    <h2>
+        8. 추가 버튼 클릭시마다 input[type=text]인 요소가 div.input-container에 추가될수 있도록 구현하시오.
+        단, 최대 10개까지만 추가될 수 있도록 하시오. (10개를 초과하려는 순간 "10개까지만 추가 가능합니다."와 같은 알람창 출력)
+    </h2>
+    <button >추가</button>
+    <div class="input-container"></div>
+
+    <hr>
+        
+    <h2>
+        9. 출력 버튼을 클릭시 아래 객체에 저장된 데이터(속성,속성값)의 내용을 ul안에 li요소로 출력되게 하시오.<br>
+        {name:"강보람", age:23, height:163.5, weight:50.7, addr:"서울시 구로구", birthDay:2000/09/18}
+    </h2>
+    <div class="list-data">
+        <button >출력</button>
+        <ul></ul>
+    </div>
+
+    <hr>
+
+    <h2>
+        10. 출력하기 버튼 클릭시 아래의 객체배열로 저장된 데이터를 div#data-table영역안에 table 요소를 만들어서 출력하시오.<br>
+        [{no:1,title:"첫번째",writer:"유저1",enrolldate:오늘날짜} <br>
+         {no:2,title:"두번째",writer:"유저2",enrolldate:오늘날짜} <br>
+         {no:3,title:"세번째",writer:"유저3",enrolldate:오늘날짜} <br>
+         {no:4,title:"네번째",writer:"유저4",enrolldate:오늘날짜}] <br>
+        * 이때 위의 객체배열을 전역변수로 만들어 둘 것 *
+    </h2>
+    <button >출력하기</button>
+    <div id="data-table"></div>
+
+
+    <h2>
+        11. 아래의 input태그들을 이용해서 사용자로부터 글번호, 제목, 작성자명, 작성일을 입력받고 <br>
+            추가 버튼 클릭시 위 10번 문제에서 세팅해둔 전역 객체배열에 추가한 후 table에도 한 행 추가 되는 기능을 구현하시오. <br>
+            (테스트시 10번 실행 후 11번 실행하기)
+    </h2>
+
+    글번호 : <input type="number" id="boardNo"> <br>
+    제목 : <input type="text" id="boardTitle"> <br>
+    작성자 : <input type="text" id="boardWriter"> <br>
+    작성일 : <input type="date" id="boardDate"> <br>
+
+    <button >추가</button>
+
+    <hr>
+
+    <h2>
+        12. 아래의 텍스트 상자에서 사용자가 입력할 때 마다 현재 입력된 글자와 글자수를 
+            div#text-container에 출력되게끔 구현하시오. 
+    </h2>
+    <input type="text" class="input-data" >
+    <div id="text-container"></div>
+
+    <hr>
+
+    <h2>
+        13. 아래의 텍스트 상자를 이용해서 사용자에게 비밀번호를 두번 입력 받는다. <br>
+            이때 비밀번호와 비밀번호 확인 텍스트상자에 사용자가 입력할때 마다 두개의 입력된 비밀번호를 비교해서 <br>
+            두개가 일치하면 초록색 문구로 "일치합니다.", 일치하지 않으면 빨강색으로 "일치하지 않습니다." 문구를 <br>
+            span#pwd-result에 출력하시오.
+    </h2>
+    비밀번호 : <input type="password" id="input-pwd" ><br>
+    비밀번호 확인 : <input type="password" id="input-pwdck" ><br>
+
+    <span id="pwd-result"></span>
+
+
+</body>
+</html>

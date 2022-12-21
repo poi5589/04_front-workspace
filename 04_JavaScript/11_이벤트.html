@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+    .area{
+        border:1px solid black;
+        width:500px;
+        height:100px;
+        background: lightcyan;
+        }
+    </style>
+</head>
+<body>
+   
+    <h1>이벤트</h1>
+
+    <h2>1. 이벤트 모델 종류</h2>
+    <h3>* 고전 이벤트 모델 (기본 이벤트 모델)</h3>
+    <p>
+        특정 요소객체를 가지고 와서 해당 요소의 이벤트 속성에 접근한 후 <br>
+        이벤트 핸들러를 연결하는 방식
+    </p>
+
+    <!-- 요소내부에 직접적으로 이벤트속성 기술 -->
+
+    <button id="btn1">실행확인</button>
+    <button id="btn2">실행확인</button>
+
+    <div id="area1" class="area"></div>
+
+    <script>
+        const divEl = document.getElementById("area1");
+
+       document.getElementById("btn1").onclick = function(){
+            divEl.innerHTML += "btn1이 클릭되었습니다. <br>"; 
+        };
+ 
+        document.getElementById("btn2").onclick = function(){
+            divEl.innerHTML += "btn2가 클릭되면서 btn1이벤트가 제거됨<br>";
+            document.getElementById("btn1").onclick = null; 
+            // null대입시 funcion이 사라짐 => 이벤트제거구문
+        }
+
+    </script>
+
+    <h3>* 인라인 이벤트 모델</h3>
+    <p>
+        요소 내부에 직접적으로 이벤트 속성 제시해서 실행할 내용을 정의하는 방식 <br>
+    </p>
+
+    <button onclick="document.getElementById('area2').innerHTML += '첫번째 버튼 클릭<br>';">실행확인</button>
+    <button onclick="test1();">실행확인</button>
+
+    <div id="area2" class="area"></div>
+
+    <script>
+        function test1(){
+            document.getElementById("area2").innerHTML += "두번째 버튼 클릭<br>";
+        }
+    </script>
+
+    <br>
+    <h3>* 표준 이벤트 모델 (addEventListener)</h3>
+    <p>
+        w3c에서 공식적으로 지정한 이벤트 모델 <br>
+        IE는 9버전부터 지원
+    </p>
+
+    <!-- 요소내부에 직접적으로 이벤트속성 기술 x -->
+
+    <button id="btn3">실행확인</button>
+
+    <script>
+        const btn3 = document.getElementById("btn3");
+
+        btn3.addEventListener("click", function(){ // onclick == 이벤트속성
+            alert("표준이벤트 모델 테스트");
+        }); 
+
+        btn3.addEventListener("mouseenter", function(){
+            btn3.style.backgroundColor = "red";
+        })
+
+        btn3.addEventListener("mouseout", function(){
+            btn3.style.backgroundColor = null;
+        })
+
+    </script>
+
+    <hr>
+
+    <h2 onclick="test2();">2. 현재 이벤트가 발생한 해당 요소객체에 접근하는 방법</h2>
+
+    <button id="btn4">고전이벤트방식</button>
+    <button id="btn5">표준이벤트방식</button>
+    <button onclick="test2();">인라인이벤트방식</button>
+
+    <script>
+        // 고전이벤트방식
+        document.getElementById("btn4").onclick = function(e){ // 이벤트핸들러
+            console.log(e); // 매개변수에는 Event객체가 넘어온다
+            console.log(window.event); // Event 객체
+
+            // 현재 이벤트가 발생한 요소객체(target속성)에 접근하고자 한다면 
+            console.log(e.target);
+            console.log(window.event.target);
+            console.log(document.getElementById("btn4"));
+            console.log(this); // 현재요소객체
+
+            e.target.innerHTML = "버튼클릭됨";
+            window.event.target.style.backgroundColor = "red";
+            this.style.color = "white";
+
+        }
+
+        document.getElementById("btn4").onclick = function(e){
+            console.log(e);
+            console.log(window.event);
+        }
+
+        // 표준이벤트방식
+        document.getElementById("btn5").addEventListener("click", function(e){ // 이벤트핸들러
+            console.log(e.target);
+            console.log(window.event.target);
+            console.log(this); // 버튼요소객체
+        })
+
+        // 인라인이벤트방식
+        function test2(e){
+            //console.log(e); // undefined == 초기화가 안됨
+            //console.log(e.target);
+
+            //console.log(this); // 선언적함수에서의 this == window객체를 가리킴
+
+            console.log(window.event.target); // 현재이벤트가발생한요소객체에접근
+
+        }
+
+        function test3(el){
+            console.log(el);
+        }
+    </script>
+
+    <button onclick="test3(this);">인라인이벤트방식2</button>
+
+    <hr>
+
+    <h2>3. 키보드 관련 이벤트</h2>
+    <p>
+        - keydown | keypress : 키가 눌려질때 발샏하는 이벤트 <br>
+          > keydown : 키보드의 모든 키가 눌려질 때 발생됨 <br>
+          > keypress : 키보드의 펑션키, 기능키, 한글 제외한 나머지 키가 눌려질 때 발생됨 <br>
+
+        - keyup : 키가 떼어질때 발생되는 이벤트
+    </p>
+    이름 : <input type="text" id="userName">
+
+    <script>
+        document.getElementById("userName").onkeyup = function(e){
+            //console.log("이벤트발생");
+
+            //console.log(e);
+            //console.log(e.key); // 현재 누른 키에대한 정보
+            //console.log(e.keyCode);// 현재 누른 키의 코드
+            
+            console.log(this.value);
+        }
+    </script>
+
+    
+
+
+
+
+
+
+
+
+
+
+
+<br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
+</body>
+</html>

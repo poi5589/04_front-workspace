@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HTML요소접근</title>
+    <style>
+        .area{
+            border:1px solid black;
+            width:100px;
+            height:100px;
+            background:black;
+        }
+    </style>
+</head>
+<body>
+    
+    <h1>문제1. 색상 선택후 변경 버튼을 클릭하면 색상이 변경되도록 만들어 보시오</h1>
+    <div id="area1" class="area"></div>
+    <input type="color" id="color">
+    <button onclick="test1();">변경</button>
+
+    <script>
+        function test1(){
+            /*
+            const divEl = document.getElementById("area1");
+            const color = document.getElementById("color");
+            divEl.style.backgroundColor = color.value;
+            */
+           
+            document.getElementById("area1").style.backgroundColor = document.getElementById("color").value;
+            
+            
+
+        }
+    </script>
+
+    <h1>문제2. 버튼에 따른 크기 조절이 가능하게 만들어 보시오</h1>
+    <!--
+    <div id="area2" class="area"></div>
+    <button onclick="test2();">50x50</button>
+    <button onclick="test3();">원본(100x100)</button>
+    <button onclick="test4();">200x200</button>
+
+    
+    <script>
+        const divEl = document.getElementById("area2");
+
+        function test2(){
+            divEl.style.width = "50px";
+            divEl.style.height = "50px";
+        }
+
+        function test3(){
+            divEl.style.width = '100px';
+            divEl.style.height = '100px';
+        }
+
+        function test4(){
+            divEl.style.width = '200px';
+            divEl.style.height = '200px';
+        }
+    </script>
+     -->
+
+     <div id="area2" class="area"></div>
+     <button onclick="test5(50);">50x50</button>
+     <button onclick="test5(100);">원본(100x100)</button>
+     <button onclick="test5(200);">200x200</button>
+
+     <script>
+        function test5(num){
+            const divEl = document.getElementById("area2");
+
+            divEl.style.width = num + "px";
+            divEl.style.height = num + "px";
+        }
+     </script>
+
+
+
+
+</body>
+</html>
