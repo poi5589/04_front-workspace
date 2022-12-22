@@ -171,6 +171,93 @@
         }
     </script>
 
+    <hr>
+
+    <h2>4. 태그별 기본적으로 가지고 있는 이벤트 제거</h2>
+    <p>
+        기본적으로 이벤트핸들러를 가지고 있는 요소 <br>
+        - a 태그 : 클릭시 href에 쓰여있는 url로 요청하는 기본이벤트 보유(클릭이벤트) <br>
+        - form내의 submit버튼 : 클릭시 사용자가 입력한 값들을 action에 제시되어있는 url로 제출하면서 요청하는 기본이벤트 보유
+        <br><br>
+
+        태그내에 기본적으로 설정되어있는 이벤트가 실행안되게끔 막고싶을 경우 <br>
+        => 이벤트핸들러의 return 값을 false로 설정한다 
+    </p>
+
+    <!-- 기본이벤트가 있는 요소에 다시 또 이벤트소속성을 부여하면 현재 이 코드가 먼저 실행됨 -->
+    <a href="http://www.naver.com" onclick="alert('속았지?'); return false;">네이버로 이동</a>
+    
+    <br>
+
+    <a href="http://www.google.com" onclick="return test4();">구글로 이동</a>
+
+    <script>
+        function test4(){
+            if(confirm("페이지 이동하시겠습니까?")){
+                return true;
+            }else{
+                return false; 
+            }
+        }   
+    </script>
+
+    <br><br>
+
+    <!-- action : 요청을받아처리해주는 url -->
+    <!-- mothid : get == 노출o | post == 노출x -->
+    <form action="test.do" method="post">
+        아이디 : <input type="text" name="userId" id="userId" required> <br>
+        비밀번호 : <input type="password" name="userPwd" id="userPwd" required> <br>
+        비밀번호확인 : <input type="password" id="checkPwd"> <br><br>
+
+        <input type="submit" onclick="return validate();">
+    </form>
+
+    <script>
+        function validate(){ // 유효성체크함수
+            // 아이디에 대한 유효성 검사
+            // 영문자 또는 숫자로만 5글자 이상 12글자 이하가 맞는지
+            const userId = document.getElementById("userId").value;
+
+            /*
+            if(userId.length >= 5 && userId.length <= 12){
+
+                // 첫글자에서부터 마지막글자까지 영문/숫자로만 이뤄져있는지 체크
+                for(let i=0; i<userId.length; i++){
+                    if(userId.charAt(i) >= 0 && userId.charAt(i) < 10
+                        || userId.charAt(i) >= 'a' && userId.charAt(i) <= 'z'
+                        || userId.charAt(i) >= 'A' && userId.charAt(i) <= 'Z'){
+
+                        }
+                }
+
+
+            }else{ // 글자수가 틀렸을 경우
+                 alert("글자수가 맞지않습니다");
+                 return false;
+            }
+            */
+            // 정규표현식을 이용해서 유효한 아이디형식의 패턴을 만들어둘꺼임
+            const regExp = /^[a-zA-Z0-9]{5,12}$/;
+            if(!regExp.test(userId)){ // 정규표현식의 패턴에 만족하지않는문자열인경우
+                alert("유효한 아이디의 형식이 아닙니다! 다시입력해주세요!");
+                document.getElementById("userId").select(); // input요소객체에 select메소드호출하면 그부분전체 포커싱된다(== select된다)
+                return false;
+            }
+            
+            // 두개의 비밀번호가 일치하지 않을 경우 => return false;
+            const userPwd = document.getElementById("userPwd").value;
+            const checkPwd = document.querySelector("#checkPwd").value;
+
+            if(userPwd != checkPwd){
+                alert("비밀번호가 일치하지 않습니다!");
+                return false;
+            }
+
+        }
+    </script>
+
+
     
 
 
