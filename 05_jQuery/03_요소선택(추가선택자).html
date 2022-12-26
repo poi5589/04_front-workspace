@@ -6,6 +6,11 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
+    <style>
+        .test{
+            background:purple;
+        }
+    </style>
 </head>
 <body>
     
@@ -112,9 +117,9 @@
 
             $(":text").css("backgroundColor", "red"); // type이 텍스트인 요소 == :text
 
-            $(":button").css({width:"100px", height:"100px"}).val("왕버튼");
+            //$(":button").css({width:"100px", height:"100px"}).val("왕버튼");
 
-            $(":checkbox").attr("checked", true);
+            //$(":checkbox").attr("checked", true);
 
             $(":file").css("backgroundColor", "yellowgreen");
 
@@ -135,8 +140,116 @@
                 alert($(":text").eq(1).val());
             });
 
+            /*
+            // mouseenter : 선택된 요소의 경계 내부로 마우스가 들어가는 순간 발생하는 이벤트 
+            $(":submit").mouseenter(function(){
+                //$(this).css("backgroundColor", "purple"); // $(this) == 현재이벤트가발생된요소객체
+                
+                $(this).addClass("test"); 
+                // 순수자바스크립트방식일땐 .calssName = test;
+                // jQuery방식 : .addClass() : 선택된 요소에 클래스를 추가해주는 메소드 (직접x)
+            });
+
+            // mouseout : 선택된 요소의 경계 외부로 마우스가 나갈때 발생하는 이벤트
+            $(":submit").mouseout(function(){
+                //$(this).css("backgroundColor", ""); // 빈문자열 == 초기화 
+
+                $(this).removeClass("test");
+                // jQuery방식 : .removeClass() : 선택된 요소에 클래스를 제거해주는 메소드 
+
+            })
+            */
+
+            // hover == mouseenter + mouseout
+            $(":submit").hover(function(){
+                $(this).addClass("test");
+            }, function(){
+                $(this).removeClass("test");
+            });
 
 
+        })
+    </script>
+
+    <hr>
+
+    <h3>* 상태(checked, selected, disabled, enabled) 선택자</h3>
+
+    <h4>- checked 상채 선택자 (radio, checkbox)</h4>
+
+    취미 : 
+    <input type="checkbox" name="habboy" value="game"> 
+    <label>게임</label>
+    <input type="checkbox" name="habboy" value="movie"> 
+    <label>영화</label>
+    <input type="checkbox" name="habboy" value="music"> 
+    <label>음악</label>
+    <br>
+
+    <!-- <button type="button" id="btn">실행확인</button> -->
+
+    <script>
+
+       /*
+       $(function(){
+            $("#btn").click(function(){ // 클릭하는순간요소변화
+                $("input:checked").css({width:"50px", height:"50px"});
+            })
+        })
+        */
+
+        // 체크또는 체크해제가 될때마다 이벤트발생요소에 이벤트발생하도록
+        $(":checkbox").change(function(){
+            //console.log($(this).prop("checked")); // prop : true || false
+
+            if($(this).prop("checked")){
+                $(this).css({width:"50px", height:"50px"});
+                $(this).next().css("font-size", "2em");
+            }else{
+                $(this).css({width:"", height:""});
+                $(this).next().css("font-size", "");
+            }
+        })
+
+
+    </script>
+
+    <h4>- selected 상태 선택자 (select>option)</h4>
+
+    국적 : 
+    <select name="national">
+        <option value="x">선택안함</option>
+        <option value="ko">한국</option>
+        <option value="us">미국</option>
+        <option value="eu">영국</option>
+    </select>
+
+    <button type="button" onclick="test();">확인</button>
+    <br>
+
+    선택한 나라 : <span id="result">선택안함</span>
+
+    <script>
+        function test(){
+            // 현재 선택된(selected상태인) option 요소값 가져오기
+            //console.log($("option:selected").val()); // value값
+            //console.log($("option:selected").html()); // innerHTML값
+
+            $("#result").html($("option:selected").html()); // innerHTML값
+
+        }
+    </script>
+
+
+    <h4>- disabled, enabled 상태 선택자 (input요소들, button 등)</h4>
+
+    <button type="button">활성화버튼</button>
+    <button type="button" disabled>비활성화버튼</button>
+
+    <script>
+        $(function(){
+            $("button:enabled").css("backgroundColor", "yellowgreen");
+            $("button:disabled").css("backgroundColor", "orangered");
         })
     </script>
 
@@ -158,21 +271,6 @@
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-<br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
+<br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
 </body>
 </html>
