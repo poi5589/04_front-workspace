@@ -4,45 +4,43 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>HTML요소접근</title>
+    <title>기본문법</title>
     <style>
-        .area{
-            border: 1px solid black;
-            width:300px;
-            height:100px;
-            background-color: rgba(255, 255, 0, 0.438);
+        #area{
+            border:1px solid black;
+            width:250px;
+            height:150px;
+            background:rgba(252, 252, 0, 0.438);
         }
     </style>
 </head>
 <body>
     
-<h1>HTML 태그에 접근 테스트</h1>
-<h3>단, 구매자는 태그 이름으로 접근, 상품명은 아이디로 접근, 구매가격은 name값으로 접근할 것</h3>
+    <h1>HTML 태그에 접근 테스트</h1>
 
-구매자 : <input type="text" placeholder="구매자의 이름을 입력하세요"> <br><br>
-상품명 : <input type="text" id="product" placeholder="구매 상품명을 입력하세요"> <br><br>
-가격 : <input type="number" name="price" placeholder="구매 가격을 입력하세요"> <br><br>
-<button onclick="test1();">입력값 출력하기</button> <br><br>
+    단, 구매자는 태그 이름으로 접근, 상품명은 아이디로 접근, 구매가격은 name값으로 접근할 것
+    <br><br>
+    구매자 : <input type="text" placeholder="구매자의 이름을 입력하세요"> <br><br>
+    상품명 : <input type="text" id="proName" placeholder="구매 상품명을 입력하세요"> <br><br>
+    가격 : <input type="text" name="price" placeholder="구매 가격을 입력하세요"> <br><br>
+    <input type="submit" value="입력값 출력하기" onclick="test1();"> <br><br>
 
-<div id="area1" class="area"></div>
-<script>
-    function test1(){
-        const divEl = document.getElementById("area1");
+    <div id="area"></div>
 
-        const tag = document.getElementsByTagName("input");
-        const userName = tag[0].value;
+    <script>
+        function test1(){
+            const area = document.getElementById("area");
 
-        const product = document.getElementById("product").value;
+            const userName = document.getElementsByTagName("input")[0].value;
+            const proName = document.getElementById("proName").value;
+            const price = document.getElementsByName("price")[0].value;
 
-        const name = document.getElementsByName("price");
-        const price = name[0].value;
+            area.innerHTML = "";
+            area.innerHTML += "구입자 : " + userName + "님<br>";
+            area.innerHTML += "구입상품 : " + proName + "<br>"; 
+            area.innerHTML += "구매가격 : " + price + "만원<br>";
+        }
 
-        divEl.innerHTML = "";
-        divEl.innerHTML += "구입자 : " + userName + "님<br>";
-        divEl.innerHTML += "구입상품 : " + product + "<br>";
-        divEl.innerHTML += "구매가격 : " + price + "만원";
-
-        
         /* 위의 소스코드들을 쵸큼 줄인 버전 -------------------
 			const userName = document.getElementsByTagName("input")[0].value;
 			const productName = document.getElementById("pname").value;
@@ -64,10 +62,13 @@
 		    area.innerHTML += "구입상품 : " + document.getElementById("pname").value + "<br>";
 		    area.innerHTML += "구매가격 : " + document.getElementsByName("price")[0].value + "만원";
             ------------------------------------------------------------------------------------------ */
+    </script>
 
-        
-    }
-</script>
+
+
+
+
+
 
 
 
