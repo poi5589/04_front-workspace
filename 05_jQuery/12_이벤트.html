@@ -141,6 +141,44 @@
         })
     </script>
 
+    <h3>* 일회성 이벤트 (one메소드)</h3>
+
+    <h6 id="test3">딱 한번만 실행될꺼임</h6>
+
+    <script>
+        $(function(){
+            $("#test3").one("click", function(){ // 딱한번의이벤트실행
+                alert("처음이자 마지막 이벤트 실행");
+            })
+        })
+    </script>
+
+    <h3>* 키보드 관련 이벤트</h3>
+
+    <input type="text" id="test4">
+
+    <script>
+        $(function(){
+            $("#test4").keyup(function(e){
+                //console.log($(this).val());
+                //console.log($(this).val().length);
+                console.log(e.key);
+                console.log(e.keyCode);
+            })
+        })
+    </script>
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
